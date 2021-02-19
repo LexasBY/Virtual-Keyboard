@@ -17,13 +17,13 @@ const Keyboard = {
 
   init() {
       // Create main elements
-      this.elements.main = document.createElement("div");
+      this.elements.main = document.createElement("div"); //method creates the HTML element specified by tagName
       this.elements.keysContainer = document.createElement("div");
 
       // Setup main elements
-      this.elements.main.classList.add("keyboard", "keyboard--hidden");
+      this.elements.main.classList.add("keyboard", "keyboard--hidden"); //add multiple classes
       this.elements.keysContainer.classList.add("keyboard__keys");
-      this.elements.keysContainer.appendChild(this._createKeys());
+      this.elements.keysContainer.appendChild(this._createKeys()); //adds a node to the end of the list of children of a specified parent node
 
       this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
 
@@ -42,7 +42,7 @@ const Keyboard = {
   },
 
   _createKeys() {
-      const fragment = document.createDocumentFragment();
+      const fragment = document.createDocumentFragment(); //Creates a new empty DocumentFragment into which DOM nodes can be added to build an offscreen DOM tree.
       const keyLayout = [
           "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace",
           "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
@@ -61,8 +61,8 @@ const Keyboard = {
           const insertLineBreak = ["backspace", "p", "enter", "?"].indexOf(key) !== -1;
 
           // Add attributes/classes
-          keyElement.setAttribute("type", "button");
-          keyElement.classList.add("keyboard__key");
+          keyElement.setAttribute("type", "button"); //Sets (update) the value of an attribute on the specified element.
+          keyElement.classList.add("keyboard__key"); //add a class for element
 
           switch (key) {
               case "backspace":
@@ -74,7 +74,7 @@ const Keyboard = {
                       this._triggerEvent("oninput");
                   });
 
-                  break;
+                break;
 
               case "caps":
                   keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
@@ -85,7 +85,7 @@ const Keyboard = {
                       keyElement.classList.toggle("keyboard__key--active", this.properties.capsLock);
                   });
 
-                  break;
+                break;
 
               case "enter":
                   keyElement.classList.add("keyboard__key--wide");
@@ -96,7 +96,7 @@ const Keyboard = {
                       this._triggerEvent("oninput");
                   });
 
-                  break;
+                break;
 
               case "space":
                   keyElement.classList.add("keyboard__key--extra-wide");
@@ -107,7 +107,7 @@ const Keyboard = {
                       this._triggerEvent("oninput");
                   });
 
-                  break;
+                break;
 
               case "done":
                   keyElement.classList.add("keyboard__key--wide", "keyboard__key--dark");
@@ -118,7 +118,7 @@ const Keyboard = {
                       this._triggerEvent("onclose");
                   });
 
-                  break;
+                break;
 
               default:
                   keyElement.textContent = key.toLowerCase();
@@ -128,10 +128,10 @@ const Keyboard = {
                       this._triggerEvent("oninput");
                   });
 
-                  break;
+                break;
           }
 
-          fragment.appendChild(keyElement);
+          fragment.appendChild(keyElement); //adds a node to the end of the list of children of a specified parent node
 
           if (insertLineBreak) {
               fragment.appendChild(document.createElement("br"));
