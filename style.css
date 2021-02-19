@@ -1,8 +1,15 @@
+h1{
+  color: #004134;
+  text-align: center;
+}
 .use-keyboard-input {
 position: absolute; 
-top: 130px; 
-right: 30px; 
-width: 300px
+top: 100px; 
+left: 30px; 
+width: 90%;
+height: 30%;
+border: 2px solid #004134;
+border-radius: 4px;
 }
 
 .keyboard {
